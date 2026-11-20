@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Catálogo VM INOVART | Ideias que ganham forma</title>
-  <meta name="description" content="Conheça as criações da VM INOVART. Chaveiros, decoração, itens temáticos e presentes personalizados. Escolha um produto e fale diretamente pelo WhatsApp." />
+  <meta name="description" content="Conheça os chaveiros da VM INOVART. Confira a arte original, código e preço e peça pelo WhatsApp." />
   <meta name="theme-color" content="#f8f9f6" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Catálogo VM INOVART" />
-  <meta property="og:description" content="Ideias que ganham forma. Explore as categorias e peça pelo WhatsApp." />
+  <meta property="og:description" content="Chaveiros VM INOVART. Confira os modelos e peça diretamente pelo WhatsApp." />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="styles.css" />
   <script defer src="data/produtos.js"></script>
@@ -22,8 +22,8 @@
         <img class="logo" src="assets/logo-vm-inovart.png" alt="VM INOVART — Ideias que ganham forma" />
       </a>
       <nav class="header-links" aria-label="Links do cabeçalho">
-        <a class="header-link active" href="#catalogo">Produtos</a>
-        <a class="header-link desktop-link" href="#sobre">Sobre a VM INOVART</a>
+        <a class="header-link active" href="#catalogo">Chaveiros</a>
+        
         <a class="header-contact" href="https://wa.me/5521996093767" target="_blank" rel="noopener noreferrer" aria-label="Conversar no WhatsApp">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-8 8 8 8 0 0 1-3.4-.75L4 20l1.3-4.6a8 8 0 1 1 14.7-3.9Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m9 9.4 1.1 2.2c.8 1.1 1.4 1.8 2.5 2.4l1.9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
           <span class="desktop-link">Fale conosco</span>
@@ -33,35 +33,26 @@
   </header>
 
   <main>
-    <section class="hero shell" aria-labelledby="hero-title">
-      <div class="hero-text">
-        <span class="eyebrow"><span class="eyebrow-dot"></span> CATÁLOGO DIGITAL · VM INOVART</span>
-        <h1 id="hero-title">Ideias que<br /><em>ganham forma.</em></h1>
-        <p>Explore nossas criações com as artes originais de cada produto. Escolha, confira o código e peça diretamente pelo WhatsApp.</p>
-        <a href="#catalogo" class="primary-link">Explorar catálogo <span aria-hidden="true">↗</span></a>
-        <div class="hero-caption"><span class="tiny-line"></span> Artes originais, preservadas integralmente</div>
-      </div>
-    </section>
 
     <section class="catalog shell" id="catalogo" aria-labelledby="catalog-title">
       <div class="section-heading">
         <div>
-          <span class="section-kicker">O NOSSO UNIVERSO</span>
-          <h2 id="catalog-title">Explore as coleções</h2>
-          <p>Selecione uma categoria ou pesquise por nome ou código. Toque na arte para visualizá-la em tamanho maior.</p>
+          <span class="section-kicker">VM INOVART · CATÁLOGO ONLINE</span>
+          <h1 id="catalog-title">Chaveiros</h1>
+          <p>Escolha seu chaveiro, confira o código e faça o pedido pelo WhatsApp.</p>
         </div>
         <div class="count-badge" id="catalog-total" aria-live="polite">Carregando catálogo...</div>
       </div>
 
       <div class="search-wrap">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-        <input id="search" type="search" autocomplete="off" aria-label="Pesquisar produto por nome ou código" placeholder="Busque por produto, categoria ou código..." />
-        <kbd>⌕</kbd>
+        <input id="search" type="search" autocomplete="off" aria-label="Pesquisar produto por nome ou código" placeholder="Buscar chaveiro, nome ou código..." />
+        
       </div>
       <div class="categories" id="categories" role="group" aria-label="Filtrar por categoria"></div>
 
       <div class="catalog-toolbar">
-        <div class="catalog-breadcrumb" id="breadcrumb"><strong>Todos os produtos</strong></div>
+        <div class="catalog-breadcrumb" id="breadcrumb"><strong>Chaveiros</strong></div>
         <div class="catalog-actions">
           <label for="subcategory" class="sr-only">Subcategoria</label>
           <select id="subcategory" aria-label="Filtrar subcategoria"><option value="">Todas as subcategorias</option></select>
@@ -75,14 +66,7 @@
         <div class="empty-icon" aria-hidden="true">✦</div>
         <h3>Nenhum produto encontrado</h3>
         <p>Explore outra categoria ou experimente uma busca diferente.</p>
-        <button type="button" class="reset-button" id="reset-filters">Ver todos os produtos</button>
-      </div>
-    </section>
-
-    <section class="bottom-promo" id="sobre">
-      <div class="shell bottom-inner">
-        <div><span class="section-kicker">UM TOQUE PESSOAL</span><h2>Tem uma ideia especial?</h2><p>Conte o que você procura. Adoramos transformar ideias em presentes e criações únicas.</p></div>
-        <a href="https://wa.me/5521996093767?text=Ol%C3%A1%21%20Gostaria%20de%20conversar%20sobre%20um%20produto%20personalizado%20da%20VM%20INOVART." target="_blank" rel="noopener noreferrer" class="bottom-cta">Conversar no WhatsApp <span aria-hidden="true">↗</span></a>
+        <button type="button" class="reset-button" id="reset-filters">Limpar filtros</button>
       </div>
     </section>
   </main>
