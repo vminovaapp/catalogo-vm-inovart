@@ -8,7 +8,7 @@ window.VM_CATALOG_DATA = {
   whatsapp: "5521996093767",
   categorias: ["Chaveiros", "Decoração e Arte", "Temáticos", "Organização do Lar", "Pets - Acessórios", "Edição de Fotos"],
   produtos: [
-    {codigo:"CH001",nome:"Buda Dourado",categoria:"Chaveiros",subcategoria:"Religiosos",descricao:"Símbolo de paz, equilíbrio e serenidade. Um chaveiro especial para presentear ou acompanhar você no dia a dia.",preco:null,foto:"assets/produtos/CH001.png",disponivel:true},
+    {codigo:"CH001",nome:"Buda Dourado",categoria:"Chaveiros",subcategoria:"Religiosos",descricao:"Símbolo de paz, equilíbrio e serenidade. Um chaveiro especial para presentear ou acompanhar você no dia a dia.",preco:20,foto:"assets/produtos/CH001.png",disponivel:true},
     {codigo:"CH002",nome:"Raquete Bullpadel",categoria:"Chaveiros",subcategoria:"Esportes",descricao:"A paixão pelas quadras em cada detalhe. Um chaveiro esportivo para presentear ou levar seu estilo para o dia a dia.",preco:null,foto:"assets/produtos/CH002.png",disponivel:true},
     {codigo:"CH004",nome:"Coração Tricolor",categoria:"Chaveiros",subcategoria:"Criativos",descricao:"Cores que encantam em cada detalhe. Um coração criativo para acompanhar suas chaves.",preco:null,foto:"assets/produtos/CH004.png",disponivel:true},
     {codigo:"CH005",nome:"Anilha Tricolor",categoria:"Chaveiros",subcategoria:"Esportes",descricao:"Para quem vive o universo fitness. Estilo, motivação e personalidade para acompanhar sua rotina de treinos.",preco:null,foto:"assets/produtos/CH005.png",disponivel:true},
