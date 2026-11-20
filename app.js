@@ -2,7 +2,7 @@
   'use strict';
   const fallback = { whatsapp:'5521996093767',categorias:[],produtos:[] };
   const db = window.VM_CATALOG_DATA || fallback;
-  const all = Array.isArray(db.produtos) ? db.produtos.filter(p=>p && p.codigo && p.nome && p.publicar!==false) : [];
+  const all = Array.isArray(db.produtos) ? db.produtos.filter(p=>p && p.codigo && p.nome && p.foto && p.publicar!==false) : [];
   const $ = sel => document.querySelector(sel);
   const els = { categories:$('#categories'),search:$('#search'),sub:$('#subcategory'),sort:$('#sort'),grid:$('#product-grid'),empty:$('#empty-state'),results:$('#results-label'),crumb:$('#breadcrumb'),total:$('#catalog-total'),dialog:$('#product-dialog') };
   let selectedCategory = 'Todos'; let activeSub = ''; let currentProduct = null;
@@ -26,10 +26,11 @@
     n.addEventListener('error',()=>{const fall=el('div','photo-fallback');fall.innerHTML=iconPhoto;fall.append(el('span','','Foto em preparação'));n.replaceWith(fall);},{once:true});
     return n;
   }
-  const categories = [...new Set(['Todos', ...(db.categorias || []), ...all.map(p=>p.categoria)].filter(Boolean))];
+  const categories = [...new Set(all.map(p=>p.categoria).filter(Boolean))];
   function buildCategories(){
     els.categories.replaceChildren();
-    for (const c of categories){const b=el('button','category-pill',c);b.type='button';b.dataset.category=c;b.setAttribute('aria-pressed', String(c===selectedCategory));b.addEventListener('click',()=>{selectedCategory=c;activeSub='';render();});els.categories.append(b);}
+    els.categories.hidden=categories.length<=1;
+    for (const c of categories.length<=1 ? [] : ['Todos', ...categories]){const b=el('button','category-pill',c);b.type='button';b.dataset.category=c;b.setAttribute('aria-pressed', String(c===selectedCategory));b.addEventListener('click',()=>{selectedCategory=c;activeSub='';render();});els.categories.append(b);}
   }
   function buildSubcategories(){
     const categoryProducts = selectedCategory==='Todos'?all:all.filter(p=>p.categoria===selectedCategory);
@@ -51,9 +52,9 @@
     imageBtn.addEventListener('click',()=>showProduct(p));
     const body=el('div','product-body');
     const top=el('div','card-meta');
-    const name=el('div','product-identity');name.append(el('span','product-code',p.codigo),el('h3','product-title',p.nome));
+    const name=el('div','product-identity');name.append(el('span','product-code',`${p.codigo} · ${p.subcategoria || p.categoria}`),el('h3','product-title',`${p.categoria === 'Chaveiros' ? 'Chaveiros | '+(p.subcategoria || 'Diversos')+' - ' : ''}${p.nome}`));
     const price=money(p.preco);const amt=el('div',`product-price${price?'':' consult'}`,price||'Valor sob consulta');
-    top.append(name,amt);body.append(top);
+    top.append(name,amt);body.append(top);if(p.descricao)body.append(el('p','product-description',p.descricao));
     const action=el('a','order-button');action.href=whatsAppURL(p);action.target='_blank';action.rel='noopener noreferrer';action.setAttribute('aria-label',`Pedir ${p.nome}, código ${p.codigo}, pelo WhatsApp`);action.innerHTML='<span class="wa-circle" aria-hidden="true">✆</span><span>Pedir no WhatsApp</span>';
     if(p.disponivel===false){action.classList.add('product-unavailable');action.setAttribute('aria-disabled','true');action.removeAttribute('href');action.textContent='Indisponível';}
     body.append(action);outer.append(imageBtn,body);return outer;
@@ -61,9 +62,10 @@
   function render(){
     buildCategories();buildSubcategories();
     const products=filtered();
-    els.crumb.replaceChildren(el('strong','',selectedCategory==='Todos'?'Todos os produtos':selectedCategory));
+    els.crumb.replaceChildren(el('strong','',selectedCategory==='Todos'?(categories.length===1?categories[0]:'Todos os produtos'):selectedCategory));
     if(activeSub)els.crumb.append(el('span','',`/ ${activeSub}`));
-    els.total.textContent=`${all.length} ${all.length===1?'produto cadastrado':'produtos cadastrados'}`;
+    els.total.textContent=`${all.length} ${all.length===1?'modelo':'modelos'}`;
+    const title=$('#catalog-title');if(title)title.textContent=categories.length===1?categories[0]:'Nossos produtos';
     els.results.textContent=`Exibindo ${products.length} ${products.length===1?'produto':'produtos'}`;
     const frag=document.createDocumentFragment();for(const p of products)frag.append(card(p));els.grid.replaceChildren(frag);
     els.empty.hidden=products.length!==0;
@@ -72,7 +74,7 @@
     currentProduct=p;
     $('#dialog-category').textContent=`${p.categoria}${p.subcategoria?' · '+p.subcategoria:''}`;
     $('#dialog-title').textContent=p.nome;$('#dialog-code').textContent=`Código ${p.codigo}`;
-    $('#dialog-description').textContent='Confira a arte original ao lado. Código e preço estão disponíveis abaixo.';
+    $('#dialog-description').textContent=p.descricao || 'Confira a arte original do produto.';
     $('#dialog-price').textContent=money(p.preco)||'Preço sob consulta';
     const imgWrap=$('.dialog-image-wrap');imgWrap.replaceChildren(photoElement(p));
     const img=imgWrap.querySelector('img');if(img)img.loading='eager';
